@@ -10,7 +10,9 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    return prompt("type your choice: rock, paper, or scissors");
+    let input = prompt("type your choice: rock, paper, or scissors");
+    input = input.toLowerCase();
+    return input;
 }
 
 function playGame() {
@@ -18,7 +20,6 @@ function playGame() {
     let computerScore = 0;
 
     function playRound(humanChoice, computerChoice) {
-        humanChoice = humanChoice.toLowerCase();
         if (computerChoice == "rock") {
             if (humanChoice == "paper") {
                 humanScore++;
