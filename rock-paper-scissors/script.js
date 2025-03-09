@@ -11,7 +11,7 @@ function getComputerChoice() {
 
 function playGame() {
     function playRound(humanChoice, computerChoice) {
-        humanChoiceText.textContent = "human choice: " + humanChoice;
+        humanChoiceText.textContent = "your choice: " + humanChoice;
         computerChoiceText.textContent = "computer choice: " + computerChoice;
     
         if (computerChoice == "rock") {
@@ -46,20 +46,27 @@ function playGame() {
             }
         }
 
-        humanScoreText.textContent = "human score: " + humanScore;
+        humanScoreText.textContent = "your score: " + humanScore;
         computerScoreText.textContent = "computer score: " + computerScore;
         if (humanScore == 5 || computerScore == 5) {
+            const resultText = document.createElement("div");
+            resultText.setAttribute("class", "resultText");
+            result.appendChild(resultText);
             if (humanScore == 5) {
-                resultText.textContent = "you win the game!";
+                resultText.textContent = "congrats, you win!";
             } else {
-                resultText.textContent = "computer wins the game!";
+                resultText.textContent = "uh oh, computer wins :(";
             }
+            const refresh = document.createElement("p");
+            refresh.textContent = "thanks for playing <3 refresh to play again";
             body.removeChild(buttonDiv);
             result.removeChild(choices);
+            result.removeChild(roundResult);
+            body.appendChild(refresh);
         }
     }
 
-    const body = document.querySelector("body");
+    const body = document.querySelector(".back");
 
     let buttonDiv = document.createElement("div");
     buttonDiv.setAttribute("class", "buttons");
@@ -86,30 +93,31 @@ function playGame() {
     let humanScore = 0;
     let computerScore = 0;
     const result = document.createElement("div");
-    result.textContent = "results:";
+    result.setAttribute("class", "result");
     body.appendChild(result);
 
-    const roundResult = document.createElement("p");
-    roundResult.textContent = "results will be displayed here"
-    result.appendChild(roundResult);
-
     const choices = document.createElement("div");
+    choices.setAttribute("class", "choices");
     const humanChoiceText = document.createElement("p");
     const computerChoiceText = document.createElement("p");
+    humanChoiceText.textContent = "your choice: tbd";
+    computerChoiceText.textContent = "computer choice: tbd";
     choices.appendChild(humanChoiceText);
     choices.appendChild(computerChoiceText);
     result.appendChild(choices);
+    const roundResult = document.createElement("p");
+    roundResult.textContent = "results will be displayed here"
+    roundResult.setAttribute("class", "roundResultText");
+    result.appendChild(roundResult);
 
     const scores = document.createElement("div");
     const humanScoreText = document.createElement("p");
-    humanScoreText.textContent = "human score: " + humanScore;
+    humanScoreText.textContent = "your score: " + humanScore;
     const computerScoreText = document.createElement("p");
     computerScoreText.textContent = "computer score: " + computerScore;
     scores.appendChild(humanScoreText);
     scores.appendChild(computerScoreText);
     result.appendChild(scores);
-    const resultText = document.createElement("p");
-    result.appendChild(resultText);
 }
 
 playGame();
