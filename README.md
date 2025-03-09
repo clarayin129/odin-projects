@@ -8,3 +8,4 @@ Hello! Here is my current project compilation for the Odin Project. Work in prog
 
 ### [Rock Paper Scissors](https://clarayin129.github.io/odin-projects/rock-paper-scissors/)
   * Basic Javascript
+  * Events and DOM Manipulation
